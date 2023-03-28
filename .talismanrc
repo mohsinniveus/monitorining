@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: EFK-monitoring/fluentd/fluentd.yaml
+  checksum: 59912ba93d2b8a622968cfbf01ebe36ae0dcee5673d06fa06783158977e209e6
+version: "1.0"
