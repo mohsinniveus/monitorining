@@ -1,4 +1,14 @@
 fileignoreconfig:
 - filename: EFK-monitoring/fluentd/fluentd.yaml
   checksum: 59912ba93d2b8a622968cfbf01ebe36ae0dcee5673d06fa06783158977e209e6
+- filename: Infra-Monitoring/kube-state-metrics-configs
+  checksum: 243361cb434c75582933cc4ea2dbb8ebc077edbddca3bd8604d456dd04995bdd
+- filename: Infra-Monitoring/kubernetes-alert-manager
+  checksum: 8336ffd56d2b5445647bd93c7e4b317329f86eed81458122439f265874cc3627
+- filename: Infra-Monitoring/kubernetes-grafana
+  checksum: 5cd52ffb2da4fd2369a0dad78294a48a93528ca9771cdec7f7eec645c6a02eba
+- filename: Infra-Monitoring/kubernetes-node-exporter
+  checksum: f208ea53835c30562d766d4d0d6b5a5ad48d6cb06c912c39171bc586c9713572
+- filename: Infra-Monitoring/kubernetes-prometheus
+  checksum: 126207806ff60f7b94dfac3bad7f5dc6470d7a916304f57b5c27047b221818d1
 version: "1.0"
