@@ -25,11 +25,11 @@ data:
     receivers:
     - name: alert-emailer
       email_configs:
-      - to: shettysuraksha90@gmail.com
-        from: surakshashetty2010@gmail.com
+      - to: 321@gmail.com
+        from: 123@gmail.com
         smarthost: smtp.gmail.com:587
-        auth_username: surakshashetty2010@gmail.com
-        auth_identity: surakshashetty2010@gmail.com
+        auth_username: 123@gmail.com
+        auth_identity: 123@gmail.com
         auth_password: qxzjcdnfagashmso
         send_resolved: true
     - name: slack_demo
