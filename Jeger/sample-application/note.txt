@@ -1,0 +1,21 @@
+Use kubectl to forward the port:
+kubectl port-forward $(kubectl get pods -l=app="do-visit-counter-frontend" -o name) 8000:8000
+
+Now, in a second terminal window, send three requests to your frontend application:
+
+for i in 1 2 3; do curl localhost:8000; done
+
+Each curl call will increment the visit number. You will see an output like this:
+
+Output
+Hello, World!
+
+You're visitor number 1 in here!
+
+Hello, World!
+
+You're visitor number 2 in here!
+
+Hello, World!
+
+You're visitor number 3 in here!

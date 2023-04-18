@@ -1,0 +1,61 @@
+##Installing the Jaeger Operator
+There are different ways of installing the Jaeger Operator on Kubernetes
+using Helm
+using Deployment files
+
+
+Reference - https://www.jaegertracing.io/docs/1.43/operator/
+
+Installing Cert-Manager
+
+To install all cert-manager components, just run:
+
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.9.0/cert-manager.yaml
+
+By default, cert-manager will be installed into the cert-manager namespace.You can verify the installation with:
+
+kubectl get pods -n cert-manager
+
+You should see the cert-manager, cert-manager-cainjector, and cert-manager-webhook pods in a Running state. 
+
+
+
+Installing Jaeger Operator using deployment files
+
+kubectl create ns observability
+
+To install the Customer Resource Definition:
+
+kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.36.0/jaeger-operator.yaml -n observability
+
+At this point, there should be a jaeger-operator deployment available.
+
+kubectl get deployment jaeger-operator -n observability
+
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+jaeger-operator   1/1     1            1           29s
+
+Deploying the Jaeger All-One image
+The operator (that we just installed) doesn’t do anything itself, it just means that we can create jaeger resources/instances that we want the Jaeger Operator to manage.
+The simplest possible way to create a Jaeger instance is by creating a YAML file like the following.
+vim simplest.yml
+apiVersion: jaegertracing.io/v1
+            kind: Jaeger
+            metadata:
+            name: simplest
+
+
+The YAML file can then be used with kubectl:
+kubectl apply -f simplest.yml
+To check the instances that were created, list the Jaeger objects:
+kubectl get jaegers
+To get the pod name, query for the pods belonging to the simplest Jaeger instance:
+kubectl get pods -l app.kubernetes.io/instance=simplest
+Query the logs from the pod:
+kubectl logs -l app.kubernetes.io/instance=simplest
+Verify Jaeger instance created:
+kubectl get services -n default | grep jaeger
+Jaeger UI
+Open now the Jaeger UI, you can do that by using port-forwarding
+kubectl port-forward svc/simplest-query 16686:16686
+
